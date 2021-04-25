@@ -1,7 +1,7 @@
 <template>
   <div id="login-container">
     <el-form
-      :ref="form"
+      ref="form"
       :model="form"
       :rules="rules"
       label-width="80px"
@@ -29,7 +29,7 @@
 </template>
 
 <script>
-import {login,getUserInfo } from "@/api/login";
+import { login, getUserInfo } from "@/api/login.js";
 
 export default {
   data() {
@@ -52,56 +52,44 @@ export default {
       }
     };
   },
+
   methods: {
-    submitForm(form) {
-     
+    submitForm() {
+      let json = {
+        username: "admin",
+        password: "123456"
+      };
+      let { username, password } = json; //ES6解构赋值
+      console.log(username);
+      console.log(json.username);
+      console.log(json["username"]);
       let self = this;
-      
-      this.$refs[form].validate(valid => {
+      this.$refs["form"].validate(valid => {
         if (valid) {
-          //表示验证成功
-          login(self.form.username,self.form.password)
-          .then(response => {
-            console.log(response.data);
-            const resp=response.data;
-            if(resp.flag){//认证通过
-               getUserInfo(resp.data.token)
-                .then(response => {
-                   console.log(response.data);
-                   const respUser=response.data;
-                   if(respUser.flag){
-                     localStorage.setItem("blyd-manager-user",JSON.stringify(respUser.data))
-                     localStorage.setItem("blyd-manager-token",resp.data.token)
-                     this.$router.push('./home')
-                   }else{
-                     this.$message({
-                       message:respUser.message,
-                       type:'warning'
-                     });
-                   }
-                })
+          // // localStorage.setItem(
+          // //   "token",
+          // //   "abudngjdjkfgjhkjkhhgjjreytruytdkfjghdkjhgdkgjfhdfkgj"
+          // );
+          this.$store.dispatch('logion')
 
-               
-
-            }else{
-                     this.$message({
-                       message:resp.message,
-                       type:'warning'
-                     });
-                   }
-          })
-          .catch(function (error) { // 请求失败处理
-          console.log(error);
+          self.$router.push({
+            path: "/home"
+            // query: this.otherQuery
           });
           //alert('submit!');
+          // login(self.form.username, self.form.password)
+          //   .then(response => {
+          //     console.log(response.data);
+          //     const resp = response.data;
+          //   })
+          //   .catch(e => {
+          //     console.log(e);
+          //   });
         } else {
           console.log("error submit!!");
           return false;
         }
       });
-    },
-    resetForm(form) {
-      this.$refs[form].resetFields();
     }
   }
 };

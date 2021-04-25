@@ -22,7 +22,7 @@ import myaxios from '../utils/myaxios'
 
 //跨域请求
 // const BASE_URL='/dev-api'
-// const BASE_URL= process.env.BASE_API;
+ //const BASE_URL= process.env.BASE_API;
 
 // console.log(process.env);
 // console.log(process.env.BASE_API);
@@ -33,6 +33,7 @@ export default{
         const promise1=myaxios({
             method:'get',
             url:'/static/data.json'
+            //url:'https://www.fastmock.site/mock/276fb559e232662a8dc6f45f58c99a5c/api/user/login'
         })
 return promise1
     }

@@ -1,13 +1,14 @@
 import  axios from 'axios'
 
 const myaxios = axios.create({
-    baseURL: 'http://192.168.1.20/web',
-    //  baseURL: process.env.BASE_API,//api的base_url
-     //baseURL: process.env.BASE_API,//api的base_ur
+
+    //baseURL: process.env.BASE_API,
+     //baseURL: '/dev-apis',
+    baseURL: 'https://www.fastmock.site/mock/276fb559e232662a8dc6f45f58c99a5c/api',
     timeout: 5000,//请求超时时间
    
   });
-  
+
 
 
 // myaxios

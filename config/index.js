@@ -3,7 +3,7 @@
 // see http://vuejs-templates.github.io/webpack for documentation.
 
 const path = require('path')
-
+const BASE_URL ='https://www.fastmock.site/mock/276fb559e232662a8dc6f45f58c99a5c/api'
 
 module.exports = {
   dev: {
@@ -13,20 +13,21 @@ module.exports = {
     assetsPublicPath: '/',
     proxyTable: {
 
-      // '/dev-apis': {
+      '/dev-apis': {
 
-      //   target: 'http://localhost:8080',//接口域名
-      //   //secure:false,//如果https接口，需要配置这个参数
+        //target: ' http://localhost:8082',//接口域名
+        target: BASE_URL,//接口域名
+        //secure:false,//如果https接口，需要配置这个参数
         
-      //   changeOrigin: true,
+        changeOrigin: true,
         
-      //   pathRewrite: {
+        pathRewrite: {
         
-      //   '^/dev-apis': ''
+        '^/dev-apis': ''
         
-      //   }
+        }
         
-      //   }
+        }
 
 
        

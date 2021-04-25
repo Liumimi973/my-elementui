@@ -9,8 +9,8 @@
     下拉菜单<i class="el-icon-arrow-down el-icon--right"></i>
   </span>
   <el-dropdown-menu slot="dropdown">
-     <el-dropdown-item>修改密码</el-dropdown-item>
-    <el-dropdown-item>退出系统</el-dropdown-item>
+     <el-dropdown-item command="a">修改密码</el-dropdown-item>
+    <el-dropdown-item command="b">退出系统</el-dropdown-item>
   </el-dropdown-menu>
 </el-dropdown>
 
@@ -18,23 +18,25 @@
     </div>
 </template>
 <script>
-import{logout} from'@/api/login.js'
+
+import {logout } from "@/api/login";
   export default {
     methods: {
       handleCommand(command) {
-        //this.$message('click on item ' + command);
-        switch(command){
+      //   this.$message('click on item ' + command);
+        switch(command) {
           case 'a':
             this.$message('单击了修改密码');
             break;
             case 'b':
-              //this.$message('单击了退出系统');
+              this.$message('单击了退出系统');
               const token=localStorage.getItem("blyd-manager-token")
               logout(token).then(response=>{
-                const resp=response.data
+                 console.log(response.data);
+                 const resp=response.data
                 if(resp.flag){
                   localStorage.removeItem("blyd-manager-token")
-                   localStorage.removeItem("blyd-manager-user")
+                  localStorage.removeItem("blyd-manager-user")
                    this.$router.push('/login')
                 }else{
                   this.$message({
@@ -43,7 +45,7 @@ import{logout} from'@/api/login.js'
                      duration:1000
                   })
                 }
-              })
+               })
               break;
 
         }
