@@ -30,7 +30,6 @@ export default {
 
 <style scoped>
 .header{ position: absolute;line-height: 50px; top:0px; left:0px;  background:#130505 ; width: 100%;}
-.Navbar{ position: absolute;left:0px; top:50px; width: 200px; bottom: 0px; overflow-y: auto ;color: rgb(64, 158, 255);
-    background-color: rgb(48, 65, 86);}
+.Navbar{ position: absolute;left:0px; top:50px; width: 200px; bottom: 0px; overflow-y: auto ;color:#ffffff;background-color: rgba(84, 92, 100,0.7);}
 .main{ position: absolute ; background: #fff; left:200px; bottom:0px; right:0px;top:50px; padding: 5px; overflow-y: auto ;}
 </style>
