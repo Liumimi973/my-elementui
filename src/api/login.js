@@ -20,7 +20,6 @@ export function login(username, password) {
 export function getUserInfo(token) {
   return myaxios({
     method: 'get',
-    //url: 'user/info?token=admin'
     url: `user/info?${token}`
 
   })

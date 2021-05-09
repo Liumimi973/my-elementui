@@ -98,7 +98,7 @@ export default {
       }
     };
     return {
-      user: JSON.parse(localStorage.getItem("blyd-manager-user")),//JSON.parse可以将JSON转为对象
+      user:JSON.parse(localStorage.getItem("blyd-manager-user")),//JSON.parse可以将JSON转为对象
       dialogFormVisible: false,
       ruleForm: {
         oldPass: "",
@@ -160,22 +160,37 @@ export default {
     },
     //封装退出系统
     logoutSystem(){
-const token = localStorage.getItem("blyd-manager-token");
-          logout(token).then(response => {
-            console.log(response.data);
-            const resp = response.data;
-            if (resp.flag) {
-              localStorage.removeItem("blyd-manager-token");
-              localStorage.removeItem("blyd-manager-user");
-              this.$router.push("/login");
-            } else {
-              this.$message({
-                message: resp.message,
+
+this.$store.dispatch('Logout').then(response => {
+          console.log(response.data);
+           if(response.flag){ 
+             this.$router.push('/login')
+
+           }else{
+             this.$message({
+                message: response.message,
                 type: "warning",
                 duration: 1000
-              });
-            }
-          });
+                })
+           }
+})
+
+          //const token = localStorage.getItem("blyd-manager-token");
+          // logout(token).then(response => {
+          //   console.log(response.data);
+          //   const resp = response.data;
+          //   if (resp.flag) {
+          //     localStorage.removeItem("blyd-manager-token");
+          //     localStorage.removeItem("blyd-manager-user");
+          //     this.$router.push("/login");
+          //   } else {
+          //     this.$message({
+          //       message: resp.message,
+          //       type: "warning",
+          //       duration: 1000
+          //     });
+          //   }
+          // });
 
     },
 

@@ -11,13 +11,16 @@ import 'element-ui/lib/theme-chalk/index.css'
 
 
 import axios from 'axios'
+
+import './permission.js'
 //import Vuex from 'vuex'
-//import store from '../src/store'
+
+import store from '../src/store/index'
 
 
 //Vue.use(Vuex)
 
-import './permission'
+
 
 Vue.prototype.axios = axios
 
@@ -30,6 +33,6 @@ Vue.use(ElementUI)
 new Vue({
   el: '#app',
   router,
-  //store,
+  store,
   render: h => h(App)
 })

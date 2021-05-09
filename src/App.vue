@@ -1,7 +1,10 @@
 <template>
   <div id="app">
+    <transition name="fade"
+		            mode="out-in">
   <!-- <Login></Login> -->
   <router-view></router-view>
+  </transition>
   </div>
   
 </template>
@@ -25,5 +28,14 @@ body {
 #app {
  width: 100%;
  height: 100%;
+}
+.fade-enter-active,
+.fade-leave-active {
+	transition: all .2s ease;
+}
+
+.fade-enter,
+.fade-leave-active {
+	opacity: 0;
 }
 </style>

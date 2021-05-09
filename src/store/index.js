@@ -1,29 +1,14 @@
 import Vuex from 'vuex'
 import Vue from 'vue'
+import user from '../store/modules/user'
 
 Vue.use(Vuex)
 
 const store = new Vuex.Store({
-  state: {
-    token: null
-  },
-  getters: {
-    token: state => {
-      return state.token
-    }
-  },
-  mutations: {
-    increment (state,token) {
-      state.token=token
-    }
-  },
-  actions: {
-    logion (context) {
-       let token="admin"
-      context.commit('increment',token)
-      localStorage.setItem("token",token)
-    }
+  modules:{
+    user
   }
+  
 })
 
 export default store

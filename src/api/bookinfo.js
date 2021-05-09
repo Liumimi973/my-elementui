@@ -54,6 +54,16 @@ export default {
     })
 
   },
+  batchRemoveUser(ids){
+
+    return myaxios({
+      method: 'delete',
+      url: `/kucun/batchremove?${ids}`,
+
+
+    })
+
+  },
   getTypeSum(){
 
     return myaxios({

@@ -55,7 +55,7 @@ export default {
   methods: {
     submitForm(formName) {
      
-    
+      //let self = this;
       
       this.$refs[formName].validate(valid => {
         if (valid) {
@@ -64,9 +64,8 @@ export default {
 
           //通过store对象的dispatch去触发动作，同事提交载荷
           this.$store.dispatch('Login',this.form).then(response=>{
-            console.log(response);
             if(response.flag){
-              this.$router.push('/')
+              this.$router.push({path:'/'})
             }else{
               this.$message({
                 message:response.message,
@@ -77,7 +76,7 @@ export default {
 
           })
 
-          // login(this.form.username,this.form.password)
+          // login(self.form.username,self.form.password)
           // .then(response => {
           //   console.log(response.data);
           //   const resp=response.data;
@@ -98,7 +97,7 @@ export default {
           //          }
           //       })
 
-          //  }else{
+         //   }else{
           //            this.$message({
           //              message:resp.message,
           //              type:'warning'
@@ -108,9 +107,7 @@ export default {
           // .catch(function (error) { // 请求失败处理
           // console.log(error);
           // });
-          // alert('submit!');
-
-
+          //alert('submit!');
 
         } else {
           console.log("error submit!!");
