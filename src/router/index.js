@@ -83,6 +83,12 @@ export default new Router({
             component: resolve => require(['@/views/user/user'],resolve),
             //component: User,
             meta:{title:'用户管理'}
+          },
+          {
+            path: '/sys',
+            component: resolve => require(['@/views/sys/sys'],resolve),
+            //component: User,
+            meta:{title:'系统管理'}
           }
       ]
     }

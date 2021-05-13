@@ -49,9 +49,17 @@
         <i class="el-icon-document"></i>
         <span slot="title">用户管理</span>
       </el-menu-item>
+
+ <el-menu-item index="/sys" >
+        <i class="el-icon-document"></i>
+        <span slot="title">系统管理</span>
+      </el-menu-item>
      
     </el-menu>
 
+
+     
+ 
     </div>
 </template>
 <script>
